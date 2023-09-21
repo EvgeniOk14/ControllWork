@@ -81,9 +81,9 @@ public abstract class Animal implements ComandAnimal
         return id;
     }
 
-    public void setName(String firstName)
+    public void setName(String name)
     {
-        this.name = firstName;
+        this.name = name;
     }
 
     public String getName()
@@ -140,11 +140,7 @@ public abstract class Animal implements ComandAnimal
             animal.setKindOfAnimal(kindOfAnimal);
         }
 
-            /*System.out.println("Введите id: ");
-            Scanner sc = new Scanner(System.in);
-            String input = sc.nextLine();
-            int id = sc.nextInt();
-            animal.setId(id);*/
+
         System.out.println("Введите id: ");
         try {
             ScannerInt scannerInt = new ScannerInt();
@@ -167,7 +163,7 @@ public abstract class Animal implements ComandAnimal
         {
             /*Вод и добавление даты рждения*/
             ScannerDarta scannerDarta = new ScannerDarta();
-            dataBirth = scannerDarta.scannerStart();
+            dataBirth = scannerDarta.scannerData();
             animal.setDataBirth(dataBirth);
         }
         catch (NotRightDataInputExeption e)

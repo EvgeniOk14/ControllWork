@@ -10,25 +10,28 @@ import Scanners.ScannerStart;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class StartProgramm
+public class StartProgrammSearchAnimalBy
 {
     private ArrayList<Animal> listOfAnimal;
 
-    public StartProgramm(ArrayList<Animal> listOfAnimal)
+    public StartProgrammSearchAnimalBy(ArrayList<Animal> listOfAnimal)
     {
         this.listOfAnimal = listOfAnimal;
     }
-    public void startProgramm() throws NotRightTypeException, NotDigitalExeption, NotRightDataInputExeption, NotStringExeption {
-        Tablo tablo = new Tablo();
-        tablo.tablo();
+    public void startProgrammSearchAnimalById() throws NotRightTypeException, NotDigitalExeption, NotRightDataInputExeption, NotStringExeption {
+        TabloSearchAnimalBy tabloSearchAnimalBy = new TabloSearchAnimalBy();
+        tabloSearchAnimalBy.tabloSearchAnimalBy();
 
         ScannerStart scannerStart = new ScannerStart();
         Scanner scanner = scannerStart.scannerStart();
 
         ReadConsoleNumber readConsoleNumber = new ReadConsoleNumber();
         int number = readConsoleNumber.readConsoleNumber(scanner);
-        ChooseOperation chooseOperation = new ChooseOperation(listOfAnimal);
-        chooseOperation.chooseOperation(number);
+
+        ChooseOperationFindAnimalBy chooseOperationFindAnimalBy = new ChooseOperationFindAnimalBy(listOfAnimal);
+        chooseOperationFindAnimalBy.chooseOperationFindAnimalBy(number);
 
     }
 }
+
+

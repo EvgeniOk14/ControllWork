@@ -4,7 +4,9 @@ import AllAnimal.Animal;
 import AllAnimal.DomesticAnimal.*;
 import AllAnimal.PackAnimal.*;
 import Exceptions.NotDigitalExeption;
+import Exceptions.NotRightDataInputExeption;
 import Exceptions.NotRightTypeException;
+import Exceptions.NotStringExeption;
 import Service.StartProgramm;
 
 import java.util.ArrayList;
@@ -22,7 +24,7 @@ public class CheckTypeOfAnimal
 
     }
 
-    public String checkTypeOfAnimal(String typeOfAnimal) throws NotRightTypeException, NotDigitalExeption {
+    public String checkTypeOfAnimal(String typeOfAnimal) throws NotRightTypeException, NotDigitalExeption, NotRightDataInputExeption, NotStringExeption {
             if (typeOfAnimal.equalsIgnoreCase("кот"))
             {
                 Animal animal = new Cat();

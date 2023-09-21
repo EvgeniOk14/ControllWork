@@ -9,8 +9,8 @@ import java.util.Scanner;
 
 public class ScannerDarta
 {
-    public LocalDate scannerStart() throws NotDigitalExeption, NotRightDataInputExeption {
-            System.out.println("Введите дату рождения в формате yyyy.MM.dd: ");
+    public LocalDate scannerData() throws NotDigitalExeption, NotRightDataInputExeption {
+            System.out.println("Введите дату рождения в формате yyyy-MM-dd: ");
             Scanner scanner = new Scanner(System.in);
             String input = scanner.nextLine();
 
@@ -27,3 +27,4 @@ public class ScannerDarta
 
     }
 }
+
