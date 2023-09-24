@@ -1,10 +1,7 @@
 package Presenter;
 import Model.Animal.Animal;
+import Model.Exceptions.*;
 import Model.Services.CheckTypeOfAnimal;
-import Model.Exceptions.NotDigitalExeption;
-import Model.Exceptions.NotRightDataInputExeption;
-import Model.Exceptions.NotRightTypeException;
-import Model.Exceptions.NotStringExeption;
 import View.View;
 import Model.Service;
 
@@ -27,14 +24,14 @@ public class Presenter {
 
     }
 
-    public void PresenterStartProgramm(ArrayList<Animal> listOfAnimal) throws NotDigitalExeption, NotRightDataInputExeption, NotStringExeption, NotRightTypeException {
+    public void PresenterStartProgramm(ArrayList<Animal> listOfAnimal) throws NotDigitalExeption, NotRightDataInputExeption, NotStringExeption, NotRightTypeException, EmptyListExeption {
         service.ServiceStartProgramm(listOfAnimal);
     }
-    public  void PresenterServiceStartProgramm(ArrayList<Animal> listOfAnimal) throws NotDigitalExeption, NotRightDataInputExeption, NotStringExeption, NotRightTypeException {
+    public  void PresenterServiceStartProgramm(ArrayList<Animal> listOfAnimal) throws NotDigitalExeption, NotRightDataInputExeption, NotStringExeption, NotRightTypeException, EmptyListExeption {
         service.ServiceStartProgrammSearchById(listOfAnimal);
     }
 
-    public void PresenterCheckTypeOfAnimal(String typeOfAnimal) throws NotDigitalExeption, NotRightDataInputExeption, NotStringExeption, NotRightTypeException {
+    public void PresenterCheckTypeOfAnimal(String typeOfAnimal) throws NotDigitalExeption, NotRightDataInputExeption, NotStringExeption, NotRightTypeException, EmptyListExeption {
 
         service.ServiceCheckTypeOfAnimal(typeOfAnimal);
     }

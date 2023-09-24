@@ -1,10 +1,7 @@
 package Model.Services;
 
 import Model.Animal.Animal;
-import Model.Exceptions.NotDigitalExeption;
-import Model.Exceptions.NotRightDataInputExeption;
-import Model.Exceptions.NotRightTypeException;
-import Model.Exceptions.NotStringExeption;
+import Model.Exceptions.*;
 import View.Scanners.ScannerStart;
 import View.ConsoleService.ReadConsoleNumber;
 import View.CooseOperation.ChooseOperationFindAnimalBy;
@@ -21,7 +18,7 @@ public class StartProgrammSearchAnimalBy
     {
         this.listOfAnimal = listOfAnimal;
     }
-    public void startProgrammSearchAnimalById() throws NotRightTypeException, NotDigitalExeption, NotRightDataInputExeption, NotStringExeption {
+    public void startProgrammSearchAnimalById() throws NotRightTypeException, NotDigitalExeption, NotRightDataInputExeption, NotStringExeption, EmptyListExeption {
 
         TabloSearchAnimalBy tabloSearchAnimalBy = new TabloSearchAnimalBy();
         tabloSearchAnimalBy.tabloSearchAnimalBy();

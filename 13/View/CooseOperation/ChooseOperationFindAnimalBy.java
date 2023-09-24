@@ -1,10 +1,7 @@
 package View.CooseOperation;
 
 import Model.Animal.Animal;
-import Model.Exceptions.NotDigitalExeption;
-import Model.Exceptions.NotRightDataInputExeption;
-import Model.Exceptions.NotRightTypeException;
-import Model.Exceptions.NotStringExeption;
+import Model.Exceptions.*;
 import View.Scanners.ScannerDarta;
 import View.Scanners.ScannerInt;
 import Model.Services.FindAnimal;
@@ -32,7 +29,7 @@ public class ChooseOperationFindAnimalBy
         System.out.println("Вы выбрали в меню пункт (Выход) и Вы вышли из программы!");
         work = false;
     }
-    public void chooseOperationFindAnimalBy(int operationNumber) throws NotRightTypeException, NotDigitalExeption, NotStringExeption, NotRightDataInputExeption {
+    public void chooseOperationFindAnimalBy(int operationNumber) throws NotRightTypeException, NotDigitalExeption, NotStringExeption, NotRightDataInputExeption, EmptyListExeption {
 
         while(work == true)
         {

@@ -1,10 +1,7 @@
 package Model;
 
 import Model.Animal.Animal;
-import Model.Exceptions.NotDigitalExeption;
-import Model.Exceptions.NotRightDataInputExeption;
-import Model.Exceptions.NotRightTypeException;
-import Model.Exceptions.NotStringExeption;
+import Model.Exceptions.*;
 import View.ConsoleService.InputTypeOfAnimal;
 import View.ConsoleService.TeachAnimalNewComand;
 import View.CooseOperation.ChooseOperation;
@@ -49,17 +46,17 @@ public class Service
 
     }
 
-    public void ServiceStartProgramm(ArrayList<Animal> listOfAnimal) throws NotDigitalExeption, NotRightDataInputExeption, NotStringExeption, NotRightTypeException {
+    public void ServiceStartProgramm(ArrayList<Animal> listOfAnimal) throws NotDigitalExeption, NotRightDataInputExeption, NotStringExeption, NotRightTypeException, EmptyListExeption {
         StartProgramm startProgramm = new StartProgramm(listOfAnimal);
         startProgramm.startProgramm();
     }
 
-    public void ServiceStartProgrammSearchById(ArrayList<Animal> listOfAnimal) throws NotDigitalExeption, NotRightDataInputExeption, NotStringExeption, NotRightTypeException {
+    public void ServiceStartProgrammSearchById(ArrayList<Animal> listOfAnimal) throws NotDigitalExeption, NotRightDataInputExeption, NotStringExeption, NotRightTypeException, EmptyListExeption {
         StartProgrammSearchAnimalBy startProgrammSearchAnimalBy = new StartProgrammSearchAnimalBy(listOfAnimal);
         startProgrammSearchAnimalBy.startProgrammSearchAnimalById();
     }
 
-    public void ServiceCheckTypeOfAnimal(String typeOfAnimal) throws NotDigitalExeption, NotRightDataInputExeption, NotStringExeption, NotRightTypeException {
+    public void ServiceCheckTypeOfAnimal(String typeOfAnimal) throws NotDigitalExeption, NotRightDataInputExeption, NotStringExeption, NotRightTypeException, EmptyListExeption {
         CheckTypeOfAnimal checkTypeOfAnimal = new CheckTypeOfAnimal(listOfAnimal);
         checkTypeOfAnimal.checkTypeOfAnimal(typeOfAnimal);
     }

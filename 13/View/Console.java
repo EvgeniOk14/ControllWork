@@ -1,10 +1,7 @@
 package View;
 
 import Model.Animal.Animal;
-import Model.Exceptions.NotDigitalExeption;
-import Model.Exceptions.NotRightDataInputExeption;
-import Model.Exceptions.NotRightTypeException;
-import Model.Exceptions.NotStringExeption;
+import Model.Exceptions.*;
 import Presenter.Presenter;
 import Model.Services.StartProgramm;
 
@@ -27,7 +24,7 @@ public class Console implements View
 
 
     @Override
-    public void runProgramm() throws NotDigitalExeption, NotRightDataInputExeption, NotStringExeption, NotRightTypeException {
+    public void runProgramm() throws NotDigitalExeption, NotRightDataInputExeption, NotStringExeption, NotRightTypeException, EmptyListExeption {
         /*StartProgramm startProgramm = new StartProgramm(listOfAnimal);
         startProgramm.startProgramm();*/
         ConsoleStartProgramm(listOfAnimal);
@@ -39,14 +36,14 @@ public class Console implements View
         this.presenter = presenter;
     }
 
-    public void ConsoleStartProgramm(ArrayList<Animal> listOfAnimal) throws NotDigitalExeption, NotRightDataInputExeption, NotStringExeption, NotRightTypeException {
+    public void ConsoleStartProgramm(ArrayList<Animal> listOfAnimal) throws NotDigitalExeption, NotRightDataInputExeption, NotStringExeption, NotRightTypeException, EmptyListExeption {
         presenter.PresenterStartProgramm(listOfAnimal);
     }
-    public  void ConsoleServiceStartProgramm(ArrayList<Animal> listOfAnimal) throws NotDigitalExeption, NotRightDataInputExeption, NotStringExeption, NotRightTypeException {
+    public  void ConsoleServiceStartProgramm(ArrayList<Animal> listOfAnimal) throws NotDigitalExeption, NotRightDataInputExeption, NotStringExeption, NotRightTypeException, EmptyListExeption {
         presenter.PresenterServiceStartProgramm(listOfAnimal);
     }
 
-    public void ConsoleCheckTypeOfAnimal(String typeOfAnimal) throws NotDigitalExeption, NotRightDataInputExeption, NotStringExeption, NotRightTypeException {
+    public void ConsoleCheckTypeOfAnimal(String typeOfAnimal) throws NotDigitalExeption, NotRightDataInputExeption, NotStringExeption, NotRightTypeException, EmptyListExeption {
 
         presenter.PresenterCheckTypeOfAnimal(typeOfAnimal);
     }

@@ -7,10 +7,7 @@ import Model.Animal.DomesticAnimal.Hamster;
 import Model.Animal.PackAnimal.Camel;
 import Model.Animal.PackAnimal.Donkey;
 import Model.Animal.PackAnimal.Horse;
-import Model.Exceptions.NotDigitalExeption;
-import Model.Exceptions.NotRightDataInputExeption;
-import Model.Exceptions.NotRightTypeException;
-import Model.Exceptions.NotStringExeption;
+import Model.Exceptions.*;
 
 import java.util.ArrayList;
 
@@ -25,7 +22,7 @@ public class CheckTypeOfAnimal
         this.listOfAnimal = listOfAnimal;
     }
 
-    public String checkTypeOfAnimal(String typeOfAnimal) throws NotRightTypeException, NotDigitalExeption, NotRightDataInputExeption, NotStringExeption {
+    public String checkTypeOfAnimal(String typeOfAnimal) throws NotRightTypeException, NotDigitalExeption, NotRightDataInputExeption, NotStringExeption, EmptyListExeption {
             if (typeOfAnimal.equalsIgnoreCase("кот"))
             {
                 Animal animal = new Cat();

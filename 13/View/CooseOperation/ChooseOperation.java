@@ -1,10 +1,7 @@
 package View.CooseOperation;
 
 import Model.Animal.Animal;
-import Model.Exceptions.NotDigitalExeption;
-import Model.Exceptions.NotRightDataInputExeption;
-import Model.Exceptions.NotRightTypeException;
-import Model.Exceptions.NotStringExeption;
+import Model.Exceptions.*;
 import View.Scanners.ScannerInt;
 import Model.Services.CheckTypeOfAnimal;
 import View.ConsoleService.InputTypeOfAnimal;
@@ -32,26 +29,22 @@ public class ChooseOperation
         System.out.println("Вы выбрали в меню пункт (Выход) и Вы вышли из программы!");
         work = false;
     }
-    public void chooseOperation(int operationNumber) throws NotRightTypeException, NotDigitalExeption, NotRightDataInputExeption, NotStringExeption {
+    public void chooseOperation(int operationNumber) throws NotRightTypeException, NotDigitalExeption, NotRightDataInputExeption, NotStringExeption, EmptyListExeption {
 
         while(work == true)
         {
-            switch(operationNumber)
-            {
+            switch(operationNumber) {
                 case 1:
                     System.out.println("Вы выбрали операцию " + operationNumber + " Завести новое животное: \n");
 
                     InputTypeOfAnimal inputTypeOfAnimal = new InputTypeOfAnimal();
                     String typeOfAnimal = inputTypeOfAnimal.inputAnimal();
 
-                    try
-                    {
+                    try {
                         CheckTypeOfAnimal checkTypeOfAnimal = new CheckTypeOfAnimal(listOfAnimal);
                         checkTypeOfAnimal.checkTypeOfAnimal(typeOfAnimal);
 
-                    }
-                    catch (NotRightTypeException e)
-                    {
+                    } catch (NotRightTypeException e) {
                         System.out.println("ошибка ввода: " + e.getMessage());
 
                         ChooseOperation chooseOperation = new ChooseOperation(listOfAnimal);
@@ -63,8 +56,7 @@ public class ChooseOperation
                 case 2:
                     System.out.println("Вы выбрали операцию " + operationNumber + " Обучить животное новой команде: \n");
 
-                    try
-                    {
+                    try {
                         TeachAnimalNewComand teachAnimalNewComand = new TeachAnimalNewComand();
                         int id = teachAnimalNewComand.teachAnimalNewComandById();
 
@@ -73,11 +65,9 @@ public class ChooseOperation
                         String newCommand = sc.nextLine();
 
                         Iterator<Animal> iterator = listOfAnimal.iterator();
-                        while (iterator.hasNext())
-                        {
+                        while (iterator.hasNext()) {
                             Animal animal = iterator.next();
-                            if (animal.getId() == id)
-                            {
+                            if (animal.getId() == id) {
                                 animal.getAnimalListOfComand().add(newCommand);
                                 System.out.println("Команда успешно добавлена для животного с id " + id + "\n");
                                 System.out.println("Список команд для животного с id " + id + ": " + animal.getAnimalListOfComand() + "\n");
@@ -85,9 +75,7 @@ public class ChooseOperation
                             }
 
                         }
-                    }
-                    catch (NotDigitalExeption e)
-                    {
+                    } catch (NotDigitalExeption e) {
                         System.out.println(e.getMessage());
                     }
 
@@ -97,10 +85,14 @@ public class ChooseOperation
 
                 case 3:
                     System.out.println("Вы выбрали операцию " + operationNumber + "  Вывести список всех животных: \n");
-                    System.out.println(listOfAnimal.toString());
-                    StartProgramm startProgram3 = new StartProgramm(listOfAnimal);
-                    startProgram3.startProgramm();
-                    break;
+                    if (!listOfAnimal.isEmpty()) {
+                        System.out.println(listOfAnimal.toString());
+                        StartProgramm startProgram3 = new StartProgramm(listOfAnimal);
+                        startProgram3.startProgramm();
+                        break;
+                    }
+                    throw new EmptyListExeption("Ошибка: Лист животных путой! ");
+
 
                 case 4:
                     System.out.println("Вы выбрали операцию " + operationNumber + " Поиск животного: \n");
@@ -111,32 +103,33 @@ public class ChooseOperation
                 case 5:
                     System.out.println("Вы выбрали операцию " + operationNumber + " Удаление животного из списка: \n");
                     System.out.println("Ведите id животного, подлежащего удалению: ");
-                    try
-                    {
+
                         ScannerInt scannerInt = new ScannerInt();
                         int id = scannerInt.scannerStart();
 
-                        Iterator<Animal> iterator = listOfAnimal.iterator();
-                        while (iterator.hasNext())
+                        if (!listOfAnimal.isEmpty())
                         {
-                            Animal animal = iterator.next();
-
-                                if(animal.getId() == id)
+                            Iterator<Animal> iterator = listOfAnimal.iterator();
+                            while (iterator.hasNext())
+                            {
+                                Animal animal = iterator.next();
+                                if (animal.getId() == id)
                                 {
                                     listOfAnimal.remove(animal);
                                     System.out.println("Животное с id = " + id + "успешно удалено!\n");
                                     System.out.println("список животных после удаления: \n" + listOfAnimal.toString());
+                                    StartProgrammSearchAnimalBy startProgrammSearchAnimalBy5 = new StartProgrammSearchAnimalBy(listOfAnimal);
+                                    startProgrammSearchAnimalBy5.startProgrammSearchAnimalById();
+                                    break;
                                 }
+                            }
+                        }
+                        else
+                        {
+                            throw new EmptyListExeption("ошибка: пусто список животных!");
                         }
 
-                    }
-                    catch (NotDigitalExeption e)
-                    {
-                        System.out.println("ошибка ввода:" + e.getMessage());
-                    }
-                    StartProgrammSearchAnimalBy startProgrammSearchAnimalBy5 = new StartProgrammSearchAnimalBy(listOfAnimal);
-                    startProgrammSearchAnimalBy5.startProgrammSearchAnimalById();
-                    break;
+
 
                 case 6:
                     System.out.println("Вы выбрали операцию " + operationNumber + " Вывести список команд животного найденного по имени: \n");
